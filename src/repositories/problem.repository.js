@@ -47,6 +47,15 @@ class ProblemRepository {
             throw error;
         }
     }
+
+    async updateProblem(id,updatedData){
+        try {
+            const problem = await Problem.findByIdAndUpdate(id,updatedData);
+            return problem;
+        } catch (error) {
+            
+        }
+    }
 }
 
 module.exports=ProblemRepository;
