@@ -27,6 +27,16 @@ class ProblemRepository {
         }
         
     }
+
+    async getProblem(id){
+        try {
+            const problem = await Problem.findById(id);
+            return problem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 }
 
 module.exports=ProblemRepository;
