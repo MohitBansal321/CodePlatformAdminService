@@ -3,6 +3,7 @@ const NotImplemented = require('../errors/notImplemented.error');
 const { ProblemService } = require('../services');
 const { ProblemRepository } = require('../repositories');
 const NotFound = require('../errors/notFound.error');
+const logger = require('../config/logger.config');
 
 const problemService = new ProblemService(new ProblemRepository());
 function pingProblemController(req,res){
@@ -64,6 +65,7 @@ async function deleteProblem(req,res,next){
         const problem = await problemService.deleteProblem(id);
 
         if(!problem){
+            logger.error(`Delete Method : Problem with id: ${id} not found in db`);
             throw new NotFound('Delete Problem',id);
         }
 
@@ -86,6 +88,7 @@ async function updateProblem(req,res,next){
         const problem = await problemService.updateProblem(id,data);
 
         if(!problem){
+            logger.error(`Update Method : Problem with id: ${id} not found in db`);
             throw new NotFound('Update Problem',id);
         }
 
