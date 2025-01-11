@@ -14,7 +14,7 @@ app.use(bodyParser.text());
 app.use('/api',apiRouter);
 
 app.get('/ping',(req,res)=>{
-    return res.json({message:'Working Fine'});
+    return res.status(200).json({message:'Working Fine'});
 });
 
 // This is last middleware if any error occur
