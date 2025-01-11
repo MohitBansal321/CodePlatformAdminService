@@ -7,7 +7,7 @@ const logger = require('../config/logger.config');
 
 const problemService = new ProblemService(new ProblemRepository());
 function pingProblemController(req,res){
-    res.json({message:"Problem controller is up"})
+    res.status(StatusCodes.OK).json({message:"Problem controller is up"})
 }
 
 async function addProblem(req,res,next){
